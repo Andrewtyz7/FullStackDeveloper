@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loyalty Points</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="Mulah Logo" class="logo">
+        <h2>Hello,</h2>
+        <h2>Welcome!</h2>   
+        <h1>Check Your Loyalty Points & Rewards</h1>
+
+        <div class="phone-input-group">
+            <select class="form-select country-code" id="countryCode">
+                <option value="+60" selected>+60</option>
+                <option value="+1">+1</option>
+                <option value="+44">+44</option>
+                <option value="+91">+91</option>
+            </select>
+            <input
+                type="tel"
+                class="form-control phone-number"
+                placeholder="Enter your mobile number"
+                id="phoneNumber"
+                pattern="\d*"
+                oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            >
+            <button type="button" class="btn-check">&#10003;</button>
+        </div>
+        <button id="checkBtn" disabled>Check Loyalty Points</button>
+
+        <div>
+            <hr>
+            <p>Powered by <a href="https://www.MulahRewards.com" target="_blank">MulahRewards.com</a></p>
+        </div>
+    </div>
+
+    <script>
+        const phoneInput = document.getElementById("phoneNumber");
+        const countryCode = document.getElementById("countryCode");
+        const checkLoyaltyBtn = document.getElementById("checkLoyaltyBtn");
+    
+        function validatePhoneNumber() {
+            const fullNumber = countryCode.value + phoneInput.value.trim();
+            console.log("Validating: ", fullNumber); // Debugging step to see the full concatenated number
+            checkLoyaltyBtn.disabled = fullNumber !== "+60173527250";
+        }
+    
+        phoneInput.addEventListener("input", validatePhoneNumber);
+    
+        countryCode.addEventListener("change", validatePhoneNumber);
+    
+        checkLoyaltyBtn.addEventListener("click", () => {
+            const fullNumber = countryCode.value + phoneInput.value.trim();
+            localStorage.setItem("userPhone", fullNumber);
+            window.location.href = "page2.html";
+        });
+
+    </script>
+    
+</body>
+
+</html>
+

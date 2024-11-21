@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="Mulah Logo" class="logo">
+        <h3>Registration</h3>
+        <h4>Please fill up your details.</h4>
+        <form id="detailsForm">
+        <h5>Name</h5>
+        <input type="text" id="name" placeholder="Enter your name" required>
+        <h5>Birthday</h5>
+        <input type="date" id="birthday" placeholder="Enter your birthday" required>
+        <h5>Email</h5>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button type="submit">Submit</button>
+        </form>
+        <div>
+            <hr>
+            <p>Powered by <a href="https://www.MulahRewards.com" target="_blank">MulahRewards.com</a></p>
+        </div>
+    </div>
+    <script>
+        const form = document.getElementById("detailsForm");
+
+        form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const birthday = document.getElementById("birthday").value;
+        const email = document.getElementById("email").value;
+
+        localStorage.setItem("userName", name);
+        localStorage.setItem("userBirthday", birthday);
+        localStorage.setItem("userEmail", email);
+
+        window.location.href = "page3.html"; // Link to Page 3
+        });
+    </script>
+</body>
+</html>

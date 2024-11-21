@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="Mulah Logo" class="logo">
+        <h3>Welcome!</h3>
+        <h4>Here are your details:</h4>
+        <div class="details">
+            <p><strong>Phone Number:</strong> <span id="displayPhone"></span></p>
+            <p><strong>Name:</strong> <span id="displayName"></span></p>
+            <p><strong>Birthday:</strong> <span id="displayBirthday"></span></p>
+            <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+        </div>
+        <div>
+            <hr>
+            <p>Powered by <a href="https://www.MulahRewards.com" target="_blank">MulahRewards.com</a></p>
+        </div>
+    </div>
+    <script>
+        const phoneNumber = localStorage.getItem("userPhone");
+        const name = localStorage.getItem("userName");
+        const birthday = localStorage.getItem("userBirthday");
+        const email = localStorage.getItem("userEmail");
+
+        document.getElementById("displayPhone").textContent = phoneNumber;
+        document.getElementById("displayName").textContent = name;
+        document.getElementById("displayBirthday").textContent = birthday;
+        document.getElementById("displayEmail").textContent = email;
+    </script>
+</body>
+</html>
